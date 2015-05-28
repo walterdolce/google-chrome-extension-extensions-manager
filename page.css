@@ -1,0 +1,6 @@
+body{line-height:22px;}
+.c{width:60%;margin:0 auto;padding:20px;font-family:Tahoma,Arial,sans-serif;}
+.cc span{margin-left:20px;font-weight:bold;font-size:20px;text-shadow:1px 1px 2px #ccc;position:relative;top:-50px;}
+.ccc{padding:40px;color:#999;}
+a{text-decoration:none;color:#4A4CFF;}
+a:hover{cursor:pointer;text-decoration:underline;}

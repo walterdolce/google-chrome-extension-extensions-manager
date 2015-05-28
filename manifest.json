@@ -1,0 +1,19 @@
+{
+ "name": "Google Chrome Extension Manager",
+ "version": "1.1",
+ "description": "Manage Google Chrome's functionalities with just two clicks.",
+ "icons": {
+  "128": "icon128.png",
+  "28": "icon28.png",
+  "16": "icon16.png"
+ },
+ "permissions": [
+  "management",
+  "tabs"
+ ],
+ "browser_action": {
+  "default_icon": "icon28.png",
+  "default_title": "Google Chrome Extension Manager",
+  "default_popup": "background.html"
+ }
+}
