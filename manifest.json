@@ -1,19 +1,23 @@
 {
- "name": "Google Chrome Extension Manager",
- "version": "1.1",
- "description": "Manage Google Chrome's functionalities with just two clicks.",
- "icons": {
-  "128": "icon128.png",
-  "28": "icon28.png",
-  "16": "icon16.png"
- },
- "permissions": [
-  "management",
-  "tabs"
- ],
- "browser_action": {
-  "default_icon": "icon28.png",
-  "default_title": "Google Chrome Extension Manager",
-  "default_popup": "background.html"
- }
+    "manifest_version": 2,
+    "name": "Extensions Manager",
+    "version": "1.2",
+
+    "description": "Manages Google Chrome's tabs, apps and themes in just two clicks.",
+    "icons": {
+        "128": "icon128.png",
+        "28": "icon28.png",
+        "16": "icon16.png"
+    },
+
+    "browser_action": {
+        "default_icon": "icon28.png",
+        "default_title": "Extensions Manager",
+        "default_popup": "background.html"
+    },
+
+    "permissions": [
+        "management",
+        "tabs"
+    ]
 }
