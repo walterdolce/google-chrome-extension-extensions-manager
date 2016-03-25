@@ -1,7 +1,7 @@
 {
     "manifest_version": 2,
     "name": "Extensions Manager",
-    "version": "1.2",
+    "version": "1.2.1",
 
     "description": "Manages Google Chrome's tabs, apps and themes in just two clicks.",
     "icons": {
