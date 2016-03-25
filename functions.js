@@ -2,6 +2,10 @@ function t(u) {
     chrome.tabs.create({url: u});
 }
 
+function openUrl(url) {
+    chrome.tabs.create({url: url});
+}
+
 function gt() {
     chrome.tabs.query({}, function(tabs){
         $('#totalTabs').text(tabs.length);
@@ -138,10 +142,14 @@ chrome.management.getAll(function(ext) {
             if (en.length > 40) {
                 en = en.substr(0,30) + '...';
             }
-            o.append('<div id="' + ext[i].id + '" class="exInCon cb"><img src="' + im + '" width="16" height="16" /><span class="exInNam">' + en + '</span> <span class="exInOp"><span class="h extAction" onclick="command(this);">' + s + '</span>&nbsp;<span class="d">&#183;</span>&nbsp;&nbsp;<span class="h extRemove" onclick="command(this);">Uninstall</span></span></div>');
+            o.append('<div id="' + ext[i].id + '" class="exInCon cb"><img src="' + im + '" width="16" height="16" /><span class="exInNam">' + en + '</span> <span class="exInOp"><span class="h extAction">' + s + '</span>&nbsp;<span class="d">&#183;</span>&nbsp;&nbsp;<span class="h extRemove">Uninstall</span></span></div>');
         }
     }
-    o.append('<div class="exInFot"><span class="h" onclick="t(\'chrome://extensions/\');">Show in default page</span></div><div class="cb"></div>');
+    o.append('<div class="exInFot"><span class="h">Show in default page</span></div><div class="cb"></div>');
+    $('.exInFot .h').on('click', function() {
+        openUrl('chrome://extensions');
+    });
+
 });
 
 
@@ -162,12 +170,25 @@ chrome.tabs.query({},function(tabs) {
         if (t.length > 40) {
             t = t.substr(0,37) + '...';
         }
-        $('#tab2').append('<div id="' + tabs[i].id + '" class="exInCon cb tabHover"><img src="' + f + '" width="16" height="16" /><span class="exInNam">' + t + '</span> <span class="exInOp"><span class="h">Select</span>&nbsp;<span class="d">&#183;</span>&nbsp;<span class="h extAction">Close</span></span></div>');
-        $('.exInOp .h').on('click', function() {
-            gtt($(this));
-        });
-        $('.extAction').on('click', function() {
-            ct($(this));
-        });
+        $('#tab2').append('<div id="' + tabs[i].id + '" class="exInCon cb tabHover"><img src="' + f + '" width="16" height="16" /><span class="exInNam">' + t + '</span> <span class="exInOp"><span class="h" data-type="page">Select</span>&nbsp;<span class="d">&#183;</span>&nbsp;<span class="h extAction">Close</span></span></div>');
     }
+    $('.exInOp .h').on('click', function() {
+        var isPage = $(this).attr('data-type');
+        console.log(isPage);
+        if (isPage && isPage == 'page') {
+            gtt($(this));
+        } else {
+            command($(this));
+        }
+    });
+    $('.exInOp .h[data-type=app]').on('click', function() {
+        command($(this));
+    });
+    $('.extAction').on('click', function() {
+        ct($(this));
+    });
+
 });
+
+
+
